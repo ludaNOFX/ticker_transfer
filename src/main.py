@@ -23,7 +23,6 @@ def get_uow() -> IUnitOfWork:
 @asynccontextmanager
 async def app_lifespan():
     await db_manager.initialize(settings.DATABASE_URL)
-    print('YEEEEEEEEEEEEEEEEEEEEEEEEEEEEES))))))))))))!')
     yield
     await db_manager.dispose()
 
