@@ -37,7 +37,9 @@ class DbManager(IDbManager):
 
     async def initialize(self, db_url: str):
         self.__engine = create_async_engine(url=db_url)
-        self._session_factory = async_sessionmaker(bind=self._engine, expire_on_commit=False)
+        self._session_factory = async_sessionmaker(
+            bind=self._engine,
+            expire_on_commit=False)
 
     async def dispose(self):
         await self._engine.dispose()

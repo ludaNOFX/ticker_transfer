@@ -8,3 +8,6 @@ def skip_none_dict_factory(d: list[tuple[str, Any]]) -> dict:
 
 def as_dict_skip_none(d) -> dict:
     return asdict(d, dict_factory=skip_none_dict_factory)
+
+
+print(1)

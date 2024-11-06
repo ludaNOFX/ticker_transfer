@@ -12,12 +12,13 @@ from src.domain.interfaces.repository.entry_manager import IEntryRepository
 
 logger = logging.getLogger(__name__)
 
+
 def model_to_dto(model: TickerModel, obj: TickerDTO | None = None) -> Ticker:
     if obj:
-        obj = Ticker(id=model.id, ticker=obj.ticker, price=obj.price, timestamp=obj.timestamp)
+        obj = Ticker(id=model.id, ticker=obj.ticker, price=obj.price, timestamp=obj.timestamp)  # type: ignore
     else:
-        obj = Ticker(id=model.id, ticker=model.ticker, price=model.price, timestamp=model.timestamp)
-    return obj
+        obj = Ticker(id=model.id, ticker=model.ticker, price=model.price, timestamp=model.timestamp)  # type: ignore
+    return obj  # type: ignore
 
 
 class EntryRepository(IEntryRepository):

@@ -10,6 +10,6 @@ class TickerModel(Base):
     __tablename__ = "ticker"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    ticker: Mapped[str] = mapped_column()
+    ticker: Mapped[str] = mapped_column(unique=True)
     price: Mapped[float] = mapped_column(Float)
     timestamp: Mapped[datetime] = mapped_column(DateTime)

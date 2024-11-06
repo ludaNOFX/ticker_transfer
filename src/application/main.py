@@ -1,10 +1,9 @@
 import asyncio
 import logging
-from application import logging_config
 import os
 from contextlib import asynccontextmanager
-
-from src.application.settings import settings
+import logging_config
+from src.application.settings.settings import settings
 from src.domain.interfaces.uow import IUnitOfWork
 from src.infra.client.deribit_client import fetch_and_save_prices_periodically
 from src.infra.db.manager import db_manager
@@ -29,7 +28,8 @@ async def app_lifespan():
 
 async def main():
     try:
-        tickers = os.getenv("CURRENCIES").split(',')
+        currencies = str(os.getenv("CURRENCIES"))
+        tickers = currencies.split(',')
         logger.info("Init application")
         while True:
             async with app_lifespan():
